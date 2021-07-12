@@ -1,8 +1,14 @@
-const {Sequelize, DataTypes, Model} = require('sequelize');
+const {Sequelize, DataTypes, Model} = require('./db');
 
-const sequelize = new Sequelize('database', 'username', 'password',{
-    dialect: "sqlite",
-    storage: './resaurants-seq.sqlite'
-});
+const{Restaurant} = require('./Restaurant');
+const{Menu} = require('./Menu');
+const{Items} = require('./Items');
 
-module.exports = {sequelize, DataTypes, Model}
+Menu.belongsTo(Restaurant)
+Restaurant.hasMany(Menu)
+
+Items.belongsTo(Menu)
+Menu.hasMany(Items)
+
+
+module.exports = {Restaurant, Menu, Items};

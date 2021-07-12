@@ -1,12 +1,11 @@
-const {sequelize, DataTypes, Model} = require('./sequelize_index')
+const {sequelize, DataTypes, Model} = require('./db')
 
 class Items extends Model{
 
 
 }
 Items.init({
-    name: DataTypes.STRING,
-    type: DataTypes.STRING
+    name: DataTypes.STRING
 },{
     sequelize,
     timestamps: false
